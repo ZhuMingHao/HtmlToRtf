@@ -2,7 +2,7 @@
     x:Class="HtmlToRtf.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:common="using:WinRT_RichTextBlock.Html2Xaml"
+    xmlns:common="using:HtmlToRtf.WinRT_RichTextBlock.Html2Xaml"
     xmlns:converter="using:XAMLHtml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:HtmlToRtf"
@@ -12,6 +12,6 @@
     >
 
     <Grid>
-        <RichTextBlock converter:HtmlProperties.Html="{x:Bind HtmlString}" />
+        <RichTextBlock common:Properties.Html="{x:Bind HtmlString}"/>
     </Grid>
 </Page>
