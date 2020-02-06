@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <RichTextBlock common:Properties.Html="{x:Bind HtmlString,Mode=OneWay}" />
-        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Red"  Grid.Column="1">
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="LightBlue"  Grid.Column="1">
             <RichTextBlock converter:HtmlProperties.Html="{x:Bind HtmlString,Mode=OneWay}"/>
         </Grid>
        

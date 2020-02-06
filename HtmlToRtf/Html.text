@@ -2,5 +2,11 @@
     <p><b>This text is bold</b></p>
     <p><i>This text is italic</i></p>
     <p>This is<sub> subscript</sub> and <sup>superscript</sup></p>
-    <a href="https://www.w3schools.com">Visit W3Schools.com!</a>
+    
+    <p>This is a list:</p>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
 </body>
