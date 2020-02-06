@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.Data.Xml.Dom;
 using Windows.Data.Xml.Xsl;
 using Windows.Foundation;
@@ -28,13 +31,45 @@ namespace HtmlToRtf
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : Page, INotifyPropertyChanged
     {
         public MainPage()
         {
             this.InitializeComponent();
+            this.Loaded += MainPage_Loaded;
+
+         
         }
-        public string HtmlString { get; set; } = "<p>This is a list:</p><ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>";
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnProperyChanged([CallerMemberName] string PropertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+        }
+
+        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            var file = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync("Html.text");
+            string text = await Windows.Storage.FileIO.ReadTextAsync(file);
+            HtmlString = text;
+        }
+
+
+        private string _htmlstring;
+        public string HtmlString
+        {
+            get
+            {
+
+                return _htmlstring;
+            }
+            set
+            {
+                _htmlstring = value;
+                OnProperyChanged();
+            }
+        }
     }
     namespace WinRT_RichTextBlock.Html2Xaml
     {
